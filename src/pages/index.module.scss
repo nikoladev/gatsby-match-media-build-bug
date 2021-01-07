@@ -1,0 +1,102 @@
+.burger {
+  position: absolute;
+  top: 0;
+}
+
+.burgerOnPage {
+  left: 0;
+}
+
+.burgerInMenu {
+  right: 0;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.element {
+  --sidebar-width: 300px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  transition: all .3s ease-out;
+  overflow-y: scroll;
+
+  @media screen and (max-width: 768px) {
+    --sidebar-width: 100%;
+  }
+}
+
+.sidebar {
+  --nav-menu-color: hsl(0, 0%, 95%);
+  left: 0;
+
+  background: var(--nav-menu-color);
+
+  width: var(--sidebar-width);
+
+  @media screen and (max-width: 768px) {
+    left: calc(var(--sidebar-width) * -1);
+    z-index: 0;
+  }
+}
+
+.sidebarOpened {
+  @media screen and (max-width: 768px) {
+    left: 0;
+    z-index: 10;
+  }
+}
+
+.sidebarClosed {
+  left: calc(var(--sidebar-width) * -1);
+}
+
+.menu {
+  padding: 0 0.5rem;
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+.contentWrapper {
+  right: 0;
+  left: var(--sidebar-width);
+
+  @media screen and (max-width: 768px) {
+    left: 0;
+  }
+}
+
+.content {
+  $edge-spacing: 1rem;
+  $edge-spacing-top-mobile: 2rem;
+  $prevent-margin-from-breaking-out-of-container-element: 0.1px;
+
+  margin: 0 auto;
+
+  // 📝 Add some spacing on the sides on both mobile and desktop so it doesn't hit the
+  // screen edges (which can happen on desktop when the menu is open)
+  padding: $prevent-margin-from-breaking-out-of-container-element $edge-spacing;
+  max-width: 40rem;
+
+  @media screen and (max-width: 768px) {
+    padding-top: $edge-spacing-top-mobile;
+
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.preventScrollOnMobileWhenMenuIsOpen {
+  @media screen and (max-width: 768px) {
+    overflow: hidden;
+  }
+}
+
+.fillScreen {
+  left: 0;
+}
